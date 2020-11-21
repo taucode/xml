@@ -2,7 +2,7 @@
 
 namespace TauCode.Xml
 {
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class ElementXmlDataAttribute : Attribute
     {
         public ElementXmlDataAttribute()

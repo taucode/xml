@@ -1,10 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace TauCode.Xml.Tests.Nuspec
 {
-    class Dependencies
+    [ElementXmlData(
+        IsCamelCase = true,
+        ChildTypes = new []
+        {
+            typeof(Group),
+            typeof(Dependency)
+        })]
+    public class Dependencies : ElementXmlDataNode
     {
+        public IList<Group> Groups { get; set; } = new List<Group>();
     }
 }

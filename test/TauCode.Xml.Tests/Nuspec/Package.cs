@@ -4,11 +4,12 @@
         IsCamelCase = true,
         ChildTypes = new []
         {
-            typeof(Id),
-            typeof(TauCode.Xml.Tests.Nuspec.Version),
-            typeof(Authors)
+            typeof(Metadata),
+            typeof(Files),
         })]
     public class Package : ElementXmlDataNode
     {
+        public Metadata Metadata { get; set; }
+        public Files Files { get; set; }
     }
 }

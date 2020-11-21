@@ -1,10 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace TauCode.Xml.Tests.Nuspec
 {
-    class Files
+
+    [ElementXmlData(
+        IsCamelCase = true,
+        ChildTypes = new []
+        {
+            typeof(File)
+        })]
+    public class Files : ElementXmlDataNode
     {
+        public IList<File> FileList { get; set; } = new List<File>();
     }
 }

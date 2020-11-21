@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace TauCode.Xml
 {
-    public class ValueElementXmlDataNode : IXmlDataNode
+    public abstract class ValueElementXmlDataNode : IXmlDataNode
     {
-        public ValueElementXmlDataNode()
+        protected ValueElementXmlDataNode()
         {
             TextNode = new TextXmlDataNode();
         }

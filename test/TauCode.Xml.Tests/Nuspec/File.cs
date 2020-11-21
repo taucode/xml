@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TauCode.Xml.Tests.Nuspec
+﻿namespace TauCode.Xml.Tests.Nuspec
 {
-    class File
+    public class File : ElementXmlDataNode
     {
+        [XmlDataAttribute(IsCamelCase = true)]
+        public string Src { get; set; }
+
+        [XmlDataAttribute(IsCamelCase = true)]
+        public string Target { get; set; }
     }
 }

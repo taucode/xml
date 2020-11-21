@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TauCode.Xml
 {
-    public class TextXmlDataNode : IXmlDataNode
+    public sealed class TextXmlDataNode : IXmlDataNode
     {
         public TextXmlDataNode()
         {
