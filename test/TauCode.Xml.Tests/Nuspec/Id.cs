@@ -1,6 +1,8 @@
-﻿namespace TauCode.Xml.Tests.Nuspec
-{
-    public class Id : ValueElementXmlDataNode
-    {
-    }
-}
+﻿//namespace TauCode.Xml.Tests.Nuspec
+//{
+//    public class Id : ValueElementXmlDataNode
+//    {
+//    }
+//}
+
+// todo clean

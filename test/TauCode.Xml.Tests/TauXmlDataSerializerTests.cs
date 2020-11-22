@@ -7,7 +7,7 @@ using TauCode.Xml.Tests.Nuspec;
 namespace TauCode.Xml.Tests
 {
     [TestFixture]
-    public class XmlDataSerializerTests
+    public class TauXmlDataSerializerTests
     {
         [OneTimeSetUp]
         public void OneTimeSetUp()
@@ -19,7 +19,7 @@ namespace TauCode.Xml.Tests
         public void TodoFoo()
         {
             // Arrange
-            var serializer = new XmlDataSerializer();
+            var serializer = new TauXmlDataSerializer();
             var xml = this.GetType().Assembly.GetResourceXml("TauCode.WebApi.Server.NHibernate.Nuspec.xml", true);
 
             // Act
@@ -28,6 +28,7 @@ namespace TauCode.Xml.Tests
 
             // Assert
             var props = typeof(Metadata).GetProperties();
+
 
             throw new NotImplementedException("go on!");
         }

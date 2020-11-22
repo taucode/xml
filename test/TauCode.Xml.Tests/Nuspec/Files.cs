@@ -1,15 +1,11 @@
 ﻿using System.Collections.Generic;
+using TauCode.Xml.Attributes;
 
 namespace TauCode.Xml.Tests.Nuspec
 {
 
-    [ElementXmlData(
-        IsCamelCase = true,
-        ChildTypes = new []
-        {
-            typeof(File)
-        })]
-    public class Files : ElementXmlDataNode
+    [TauXmlElement(IsCamelCase = true)]
+    public class Files : TauXmlElement
     {
         public IList<File> FileList { get; set; } = new List<File>();
     }

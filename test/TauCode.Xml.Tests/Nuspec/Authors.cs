@@ -1,6 +1,9 @@
-﻿namespace TauCode.Xml.Tests.Nuspec
-{
-    public class Authors : ValueElementXmlDataNode
-    {
-    }
-}
+﻿//namespace TauCode.Xml.Tests.Nuspec
+//{
+//    public class Authors : ValueElementXmlDataNode
+//    {
+//    }
+//}
+
+
+// todo clean

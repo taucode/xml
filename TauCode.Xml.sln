@@ -24,9 +24,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DA806905-703
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2BF089B9-674F-44EC-BF17-382D2C7C32D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TauCode.Xml", "src\TauCode.Xml\TauCode.Xml.csproj", "{803CF63A-7A3E-4A16-8731-5AE22150311D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Xml", "src\TauCode.Xml\TauCode.Xml.csproj", "{803CF63A-7A3E-4A16-8731-5AE22150311D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TauCode.Xml.Tests", "test\TauCode.Xml.Tests\TauCode.Xml.Tests.csproj", "{B9A46B9E-799E-4FAC-8F22-CD664B20D53C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Xml.Tests", "test\TauCode.Xml.Tests\TauCode.Xml.Tests.csproj", "{B9A46B9E-799E-4FAC-8F22-CD664B20D53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TauCode.Xml.Omicron", "src\TauCode.Xml.Omicron\TauCode.Xml.Omicron.csproj", "{F15A9538-C3A5-44D8-8015-A8A5B68201F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TauCode.Xml.Omicron.Tests", "test\TauCode.Xml.Omicron.Tests\TauCode.Xml.Omicron.Tests.csproj", "{5144261D-9E42-4A89-AA4C-24F19CAE9D97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +46,14 @@ Global
 		{B9A46B9E-799E-4FAC-8F22-CD664B20D53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9A46B9E-799E-4FAC-8F22-CD664B20D53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9A46B9E-799E-4FAC-8F22-CD664B20D53C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F15A9538-C3A5-44D8-8015-A8A5B68201F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15A9538-C3A5-44D8-8015-A8A5B68201F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F15A9538-C3A5-44D8-8015-A8A5B68201F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F15A9538-C3A5-44D8-8015-A8A5B68201F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5144261D-9E42-4A89-AA4C-24F19CAE9D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5144261D-9E42-4A89-AA4C-24F19CAE9D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5144261D-9E42-4A89-AA4C-24F19CAE9D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5144261D-9E42-4A89-AA4C-24F19CAE9D97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +61,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{803CF63A-7A3E-4A16-8731-5AE22150311D} = {DA806905-7035-4C7F-AD02-BACA7738A0A2}
 		{B9A46B9E-799E-4FAC-8F22-CD664B20D53C} = {2BF089B9-674F-44EC-BF17-382D2C7C32D9}
+		{F15A9538-C3A5-44D8-8015-A8A5B68201F5} = {DA806905-7035-4C7F-AD02-BACA7738A0A2}
+		{5144261D-9E42-4A89-AA4C-24F19CAE9D97} = {2BF089B9-674F-44EC-BF17-382D2C7C32D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {170798CB-94D3-4949-81B1-0C0EB45F6FB0}

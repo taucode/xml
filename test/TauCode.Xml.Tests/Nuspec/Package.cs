@@ -1,13 +1,9 @@
-﻿namespace TauCode.Xml.Tests.Nuspec
+﻿using TauCode.Xml.Attributes;
+
+namespace TauCode.Xml.Tests.Nuspec
 {
-    [ElementXmlData(
-        IsCamelCase = true,
-        ChildTypes = new []
-        {
-            typeof(Metadata),
-            typeof(Files),
-        })]
-    public class Package : ElementXmlDataNode
+    [TauXmlElement(IsCamelCase = true)]
+    public class Package : TauXmlElement
     {
         public Metadata Metadata { get; set; }
         public Files Files { get; set; }

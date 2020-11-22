@@ -1,6 +1,9 @@
-﻿namespace TauCode.Xml.Tests.Nuspec
-{
-    public class RequireLicenseAcceptance : ValueElementXmlDataNode
-    {
-    }
-}
+﻿//namespace TauCode.Xml.Tests.Nuspec
+//{
+//    public class RequireLicenseAcceptance : ValueElementXmlDataNode
+//    {
+//    }
+//}
+
+
+// todo clean

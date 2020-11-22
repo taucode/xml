@@ -1,27 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//using System;
+//using System.Collections.Generic;
 
-namespace TauCode.Xml
-{
-    public abstract class ValueElementXmlDataNode : IXmlDataNode
-    {
-        protected ValueElementXmlDataNode()
-        {
-            TextNode = new TextXmlDataNode();
-        }
+//namespace TauCode.Xml
+//{
+//    public abstract class ValueElementXmlDataNode : ITauXmlNode
+//    {
+//        protected ValueElementXmlDataNode()
+//        {
+//            TextNode = new TauXmlText();
+//        }
 
-        public string Value
-        {
-            get => this.TextNode.Text;
-            set => this.TextNode.Text = value;
-        }
+//        public string Value
+//        {
+//            get => this.TextNode.Text;
+//            set => this.TextNode.Text = value;
+//        }
 
-        public TextXmlDataNode TextNode { get; }
+//        public TauXmlText TextNode { get; }
 
-        public IList<IXmlDataNode> ChildNodes
-        {
-            get => new List<IXmlDataNode>(new[] { this.TextNode });
-            set => throw new InvalidOperationException();
-        }
-    }
-}
+//        public IList<ITauXmlNode> ChildNodes
+//        {
+//            get => new List<ITauXmlNode>(new[] { this.TextNode });
+//            set => throw new InvalidOperationException();
+//        }
+//    }
+//}
+
+// todo clean

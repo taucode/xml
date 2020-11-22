@@ -2,7 +2,7 @@
 
 namespace TauCode.Xml.Descriptors
 {
-    public sealed class AttributeDescriptor
+    public sealed class TauXmlAttributeDescriptor
     {
         public string AttributeName { get; }
         public PropertyInfo Property { get; }

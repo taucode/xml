@@ -1,11 +1,13 @@
-﻿namespace TauCode.Xml.Tests.Nuspec
+﻿using TauCode.Xml.Attributes;
+
+namespace TauCode.Xml.Tests.Nuspec
 {
-    public class File : ElementXmlDataNode
+    public class File : TauXmlElement
     {
-        [XmlDataAttribute(IsCamelCase = true)]
+        [TauXmlAttribute(IsCamelCase = true)]
         public string Src { get; set; }
 
-        [XmlDataAttribute(IsCamelCase = true)]
+        [TauXmlAttribute(IsCamelCase = true)]
         public string Target { get; set; }
     }
 }

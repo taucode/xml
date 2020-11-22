@@ -1,16 +1,16 @@
 ﻿using System;
 
-namespace TauCode.Xml
+namespace TauCode.Xml.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public class ElementXmlDataAttribute : Attribute
+    public class TauXmlElementAttribute : Attribute
     {
-        public ElementXmlDataAttribute()
+        public TauXmlElementAttribute()
         {   
         }
 
         public string ElementName { get; set; }
         public bool IsCamelCase { get; set; }
-        public Type[] ChildTypes { get; set; }
+        //public Type[] ChildTypes { get; set; }
     }
 }

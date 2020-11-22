@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Input\TauCode.WebApi.Server.NHibernate.CsProj.xml" />
+    <None Remove="Resources\Input\TauCode.WebApi.Server.NHibernate.Nuspec.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Input\TauCode.WebApi.Server.NHibernate.CsProj.xml" />
+    <EmbeddedResource Include="Resources\Input\TauCode.WebApi.Server.NHibernate.Nuspec.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Output\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TauCode.Xml.Omicron\TauCode.Xml.Omicron.csproj" />
+  </ItemGroup>
+
+</Project>
