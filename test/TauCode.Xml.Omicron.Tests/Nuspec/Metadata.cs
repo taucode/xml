@@ -19,6 +19,7 @@ namespace TauCode.Xml.Omicron.Tests.Nuspec
         [XmlElementProperty(IsCamelCase = true)]
         public string RequireLicenseAcceptance { get; set; }
 
+        [XmlElementProperty(IsCamelCase = true)]
         public License License { get; set; }
 
         [XmlElementProperty(IsCamelCase = true)]
@@ -33,6 +34,7 @@ namespace TauCode.Xml.Omicron.Tests.Nuspec
         [XmlElementProperty(IsCamelCase = true)]
         public string Tags { get; set; }
 
+        [XmlElementProperty(IsCamelCase = true)]
         public DependenciesElement Dependencies { get; set; }
     }
 }

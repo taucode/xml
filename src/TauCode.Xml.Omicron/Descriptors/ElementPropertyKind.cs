@@ -2,10 +2,9 @@
 {
     public enum ElementPropertyKind
     {
-        InnerText = 1,
-        ValueElement = 2,
-        ValueElementList = 3,
-        ComplexElement = 4,
-        ComplexElementList = 5,
+        ValueElement = 1,
+        ValueElementList = 2,
+        ComplexElement = 3,
+        ComplexElementList = 4,
     }
 }
