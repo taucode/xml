@@ -8,7 +8,7 @@ namespace TauCode.Xml.Omicron.Tests.Nuspec
         [XmlAttributeProperty(IsCamelCase = true)]
         public string TargetFramework { get; set; }
 
-        [XmlAttributeProperty(IsCamelCase = true)]
+        [XmlElementProperty(IsCamelCase = true)]
         public IList<Dependency> Dependencies { get; } = new List<Dependency>();
     }
 }

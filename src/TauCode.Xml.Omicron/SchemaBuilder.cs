@@ -156,7 +156,7 @@ namespace TauCode.Xml.Omicron
 
         private void AddClassListProperty(ElementDescriptor parentElement, PropertyInfo property, ElementDescriptor childElement)
         {
-            // todo: check only one attr applied
+            // todo: check only one VALID attr applied
 
             var xmlElementPropAttr = property.GetCustomAttribute<XmlElementPropertyAttribute>();
             var elementName = property.Name;
