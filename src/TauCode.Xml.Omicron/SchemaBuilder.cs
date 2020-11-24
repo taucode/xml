@@ -12,7 +12,7 @@ namespace TauCode.Xml.Omicron
     {
         private Dictionary<Type, ElementDescriptor> _elements;
 
-        public SchemaDescriptor Build(Type rootType)
+        public SchemaDescriptor Build(Type rootType, string rootName)
         {
             if (rootType == null)
             {
@@ -23,7 +23,7 @@ namespace TauCode.Xml.Omicron
 
             this.BuildOrGet(rootType);
 
-            return new SchemaDescriptor(_elements);
+            return new SchemaDescriptor(rootType, rootName, _elements);
         }
 
         private ElementDescriptor BuildOrGet(Type elementType)

@@ -2,6 +2,7 @@
 
 namespace TauCode.Xml.Omicron.Tests.Nuspec
 {
+    [XmlDocumentDeclaration]
     public class Package
     {
         [XmlAttributeProperty(IsCamelCase = true)]

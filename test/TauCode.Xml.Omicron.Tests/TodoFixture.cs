@@ -22,7 +22,7 @@ namespace TauCode.Xml.Omicron.Tests
             var builder = new SchemaBuilder();
 
             // Act
-            var schemaDescriptor = builder.Build(typeof(Package));
+            var schemaDescriptor = builder.Build(typeof(Package), "package");
 
             // Assert
 

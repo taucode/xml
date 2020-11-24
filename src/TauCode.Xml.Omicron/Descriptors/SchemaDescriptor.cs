@@ -6,12 +6,18 @@ namespace TauCode.Xml.Omicron.Descriptors
 {
     public class SchemaDescriptor
     {
-        internal SchemaDescriptor(IDictionary<Type, ElementDescriptor> elements)
+        internal SchemaDescriptor(
+            Type rootType,
+            string rootName,
+            IDictionary<Type, ElementDescriptor> elements)
         {
-            // todo checks
+            this.RootType = rootType;
+            this.RootName = rootName;
             this.Elements = elements.ToDictionary(x => x.Key, x => x.Value);
         }
 
+        public Type RootType { get; }
+        public string RootName { get; }
         public IReadOnlyDictionary<Type, ElementDescriptor> Elements { get; }
     }
 }
