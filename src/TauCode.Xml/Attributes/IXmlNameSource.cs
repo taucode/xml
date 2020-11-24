@@ -1,4 +1,4 @@
-﻿namespace TauCode.Xml.Omicron.Attributes
+﻿namespace TauCode.Xml.Attributes
 {
     public interface IXmlNameSource
     {

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Xml;
-using TauCode.Xml.Omicron.Attributes;
-using TauCode.Xml.Omicron.Descriptors;
+using TauCode.Xml.Attributes;
+using TauCode.Xml.Descriptors;
 
-namespace TauCode.Xml.Omicron
+namespace TauCode.Xml
 {
     public class Serializer
     {

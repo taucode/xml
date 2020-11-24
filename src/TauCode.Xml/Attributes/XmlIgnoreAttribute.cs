@@ -3,8 +3,7 @@
 namespace TauCode.Xml.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class TauXmlValueElementAttribute : Attribute
+    public class XmlIgnoreAttribute : Attribute
     {
-        public bool IsCamelCase { get; set; }
     }
 }

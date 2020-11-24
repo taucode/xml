@@ -1,10 +1,10 @@
-﻿using NUnit.Framework;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Xml;
+using NUnit.Framework;
 using TauCode.Extensions;
-using TauCode.Xml.Omicron.Tests.Nuspec;
+using TauCode.Xml.Tests.Nuspec;
 
-namespace TauCode.Xml.Omicron.Tests
+namespace TauCode.Xml.Tests
 {
     [TestFixture]
     public class TodoSerializerTests

@@ -3,10 +3,12 @@ using TauCode.Xml.Attributes;
 
 namespace TauCode.Xml.Tests.Nuspec
 {
-    [TauXmlElement(ElementName = "dependencies")]
-    public class DependenciesElement : TauXmlElement
+    public class DependenciesElement
     {
-        public IList<Group> Groups { get; set; } = new List<Group>();
-        public IList<Dependency> Dependencies { get; set; } = new List<Dependency>();
+        [XmlElementProperty(XmlName = "group")]
+        public IList<Group> Groups { get; } = new List<Group>();
+
+        [XmlElementProperty(XmlName = "dependency")]
+        public IList<Dependency> Dependencies { get; } = new List<Dependency>();
     }
 }

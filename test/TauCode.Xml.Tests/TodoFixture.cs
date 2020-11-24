@@ -1,10 +1,10 @@
-﻿using NUnit.Framework;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Linq;
-using TauCode.Xml.Omicron.Descriptors;
-using TauCode.Xml.Omicron.Tests.Nuspec;
+using NUnit.Framework;
+using TauCode.Xml.Descriptors;
+using TauCode.Xml.Tests.Nuspec;
 
-namespace TauCode.Xml.Omicron.Tests
+namespace TauCode.Xml.Tests
 {
     [TestFixture]
     public class TodoFixture

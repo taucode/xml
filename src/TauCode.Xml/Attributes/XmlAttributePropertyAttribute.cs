@@ -3,9 +3,9 @@
 namespace TauCode.Xml.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class TauXmlAttributeAttribute : Attribute
+    public class XmlAttributePropertyAttribute : Attribute, IXmlNameSource
     {
-        public string Name { get; set; }
+        public string XmlName { get; set; }
         public bool IsCamelCase { get; set; }
     }
 }

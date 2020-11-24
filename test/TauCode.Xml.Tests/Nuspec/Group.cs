@@ -3,12 +3,12 @@ using TauCode.Xml.Attributes;
 
 namespace TauCode.Xml.Tests.Nuspec
 {
-    [TauXmlElement(IsCamelCase = true)]
-    public class Group : TauXmlElement
+    public class Group
     {
-        [TauXmlAttribute(IsCamelCase = true)]
+        [XmlAttributeProperty(IsCamelCase = true)]
         public string TargetFramework { get; set; }
 
-        public IList<Dependency> Dependencies { get; set; } = new List<Dependency>();
+        [XmlElementProperty(XmlName = "dependency")]
+        public IList<Dependency> Dependencies { get; } = new List<Dependency>();
     }
 }

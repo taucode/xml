@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace TauCode.Xml.Omicron.Descriptors
+namespace TauCode.Xml.Descriptors
 {
     public sealed class ElementDescriptor
     {

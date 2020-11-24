@@ -2,12 +2,12 @@
 
 namespace TauCode.Xml.Tests.Nuspec
 {
-    public class File : TauXmlElement
+    public class File
     {
-        [TauXmlAttribute(IsCamelCase = true)]
+        [XmlAttributeProperty(IsCamelCase = true)]
         public string Src { get; set; }
 
-        [TauXmlAttribute(IsCamelCase = true)]
+        [XmlAttributeProperty(IsCamelCase = true)]
         public string Target { get; set; }
     }
 }

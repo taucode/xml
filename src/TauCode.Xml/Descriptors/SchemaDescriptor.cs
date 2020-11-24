@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TauCode.Xml.Omicron.Descriptors
+namespace TauCode.Xml.Descriptors
 {
     public class SchemaDescriptor
     {

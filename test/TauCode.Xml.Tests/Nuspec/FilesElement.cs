@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using TauCode.Xml.Omicron.Attributes;
+using TauCode.Xml.Attributes;
 
-namespace TauCode.Xml.Omicron.Tests.Nuspec
+namespace TauCode.Xml.Tests.Nuspec
 {
     public class FilesElement
     {

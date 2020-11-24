@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TauCode.Xml.Omicron.Attributes
+namespace TauCode.Xml.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class XmlDocumentDeclarationAttribute : Attribute
