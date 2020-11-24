@@ -1,13 +1,13 @@
-﻿using System.Globalization;
+﻿using NUnit.Framework;
+using System.Globalization;
 using System.Linq;
-using NUnit.Framework;
 using TauCode.Xml.Descriptors;
 using TauCode.Xml.Tests.Nuspec;
 
 namespace TauCode.Xml.Tests
 {
     [TestFixture]
-    public class TodoFixture
+    public class SchemaBuilderTests
     {
         [OneTimeSetUp]
         public void OneTimeSetUp()

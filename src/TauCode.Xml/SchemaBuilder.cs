@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Inflector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Inflector;
 using TauCode.Xml.Attributes;
 using TauCode.Xml.Descriptors;
 
@@ -134,7 +134,10 @@ namespace TauCode.Xml
 
             if (xmlElementPropAttr != null)
             {
-                var valid = xmlElementPropAttr.XmlName != null ^ xmlElementPropAttr.IsCamelCase;
+                var valid =
+                    (xmlElementPropAttr.XmlName != null ^ xmlElementPropAttr.IsCamelCase) ||
+                    (xmlElementPropAttr.XmlName == null && !xmlElementPropAttr.IsCamelCase);
+
                 if (!valid)
                 {
                     throw new NotImplementedException();
@@ -163,7 +166,10 @@ namespace TauCode.Xml
 
             if (xmlElementPropAttr != null)
             {
-                var valid = xmlElementPropAttr.XmlName != null ^ xmlElementPropAttr.IsCamelCase;
+                var valid =
+                    (xmlElementPropAttr.XmlName != null ^ xmlElementPropAttr.IsCamelCase) ||
+                    (xmlElementPropAttr.XmlName == null && !xmlElementPropAttr.IsCamelCase);
+
                 if (!valid)
                 {
                     throw new NotImplementedException();
@@ -190,7 +196,9 @@ namespace TauCode.Xml
             if (xmlAttrPropAttr != null)
             {
                 var attrName = property.Name;
-                var valid = xmlAttrPropAttr.XmlName != null ^ xmlAttrPropAttr.IsCamelCase;
+                var valid = 
+                    (xmlAttrPropAttr.XmlName != null ^ xmlAttrPropAttr.IsCamelCase) ||
+                    (xmlAttrPropAttr.XmlName == null && !xmlAttrPropAttr.IsCamelCase);
                 if (!valid)
                 {
                     throw new NotImplementedException();
@@ -219,7 +227,10 @@ namespace TauCode.Xml
             if (xmlElementPropAttr != null)
             {
                 var elementName = property.Name;
-                var valid = xmlElementPropAttr.XmlName != null ^ xmlElementPropAttr.IsCamelCase;
+                //var valid = xmlElementPropAttr.XmlName != null ^ xmlElementPropAttr.IsCamelCase;
+                var valid =
+                    (xmlElementPropAttr.XmlName != null ^ xmlElementPropAttr.IsCamelCase) ||
+                    (xmlElementPropAttr.XmlName == null && !xmlElementPropAttr.IsCamelCase);
                 if (!valid)
                 {
                     throw new NotImplementedException();

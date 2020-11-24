@@ -194,7 +194,7 @@ namespace TauCode.Xml
                         var innerText = (string)property.GetValue(obj);
                         if (innerText == null)
                         {
-                            throw new NotImplementedException();
+                            // skip
                         }
                         else
                         {
@@ -214,7 +214,7 @@ namespace TauCode.Xml
                         var complexObject = property.GetValue(obj);
                         if (complexObject == null)
                         {
-                            throw new NotImplementedException();
+                            // skip
                         }
                         else
                         {

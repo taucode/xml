@@ -6,12 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Input\TauCode.WebApi.Server.NHibernate.CsProj.xml" />
+    <None Remove="Resources\Input\Elka.SBP.WebApi.CsProj.xml" />
+    <None Remove="Resources\Input\IntegrationTests.CsProj.xml" />
     <None Remove="Resources\Input\TauCode.WebApi.Server.NHibernate.Nuspec.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Input\TauCode.WebApi.Server.NHibernate.CsProj.xml" />
+    <EmbeddedResource Include="Resources\Input\Elka.SBP.WebApi.CsProj.xml" />
+    <EmbeddedResource Include="Resources\Input\IntegrationTests.CsProj.xml" />
     <EmbeddedResource Include="Resources\Input\TauCode.WebApi.Server.NHibernate.Nuspec.xml" />
   </ItemGroup>
 
