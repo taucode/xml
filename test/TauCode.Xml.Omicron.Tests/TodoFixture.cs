@@ -16,7 +16,7 @@ namespace TauCode.Xml.Omicron.Tests
         }
 
         [Test]
-        public void Foo()
+        public void TodoFoo()
         {
             // Arrange
             var builder = new SchemaBuilder();
@@ -198,17 +198,17 @@ namespace TauCode.Xml.Omicron.Tests
             elementProperties = elementDescriptor.ElementProperties;
             Assert.That(elementProperties, Has.Count.EqualTo(2));
 
-            elementProperty = elementProperties["groups"];
+            elementProperty = elementProperties["group"];
             Assert.That(elementProperty.Kind, Is.EqualTo(ElementPropertyKind.ComplexElementList));
-            Assert.That(elementProperty.ElementName, Is.EqualTo("groups"));
+            Assert.That(elementProperty.ElementName, Is.EqualTo("group"));
             Assert.That(
                 elementProperty.Property,
                 Is.SameAs(typeof(DependenciesElement).GetProperties().Single(x => x.Name == "Groups")));
             Assert.That(elementProperty.Element, Is.SameAs(schemaDescriptor.Elements[typeof(Group)]));
 
-            elementProperty = elementProperties["dependencies"];
+            elementProperty = elementProperties["dependency"];
             Assert.That(elementProperty.Kind, Is.EqualTo(ElementPropertyKind.ComplexElementList));
-            Assert.That(elementProperty.ElementName, Is.EqualTo("dependencies"));
+            Assert.That(elementProperty.ElementName, Is.EqualTo("dependency"));
             Assert.That(
                 elementProperty.Property,
                 Is.SameAs(typeof(DependenciesElement).GetProperties().Single(x => x.Name == "Dependencies")));
@@ -233,9 +233,9 @@ namespace TauCode.Xml.Omicron.Tests
 
             elementProperties = elementDescriptor.ElementProperties;
             
-            elementProperty = elementProperties["dependencies"];
+            elementProperty = elementProperties["dependency"];
             Assert.That(elementProperty.Kind, Is.EqualTo(ElementPropertyKind.ComplexElementList));
-            Assert.That(elementProperty.ElementName, Is.EqualTo("dependencies"));
+            Assert.That(elementProperty.ElementName, Is.EqualTo("dependency"));
             Assert.That(
                 elementProperty.Property,
                 Is.SameAs(typeof(Group).GetProperties().Single(x => x.Name == "Dependencies")));
@@ -276,9 +276,9 @@ namespace TauCode.Xml.Omicron.Tests
 
             elementProperties = elementDescriptor.ElementProperties;
 
-            elementProperty = elementProperties["files"];
+            elementProperty = elementProperties["file"];
             Assert.That(elementProperty.Kind, Is.EqualTo(ElementPropertyKind.ComplexElementList));
-            Assert.That(elementProperty.ElementName, Is.EqualTo("files"));
+            Assert.That(elementProperty.ElementName, Is.EqualTo("file"));
             Assert.That(
                 elementProperty.Property,
                 Is.SameAs(typeof(FilesElement).GetProperties().Single(x => x.Name == "Files")));

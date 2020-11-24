@@ -5,10 +5,10 @@ namespace TauCode.Xml.Omicron.Tests.Nuspec
 {
     public class DependenciesElement
     {
-        [XmlElementProperty(IsCamelCase = true)]
+        [XmlElementProperty(XmlName = "group")]
         public IList<Group> Groups { get; } = new List<Group>();
 
-        [XmlElementProperty(IsCamelCase = true)]
+        [XmlElementProperty(XmlName = "dependency")]
         public IList<Dependency> Dependencies { get; } = new List<Dependency>();
     }
 }

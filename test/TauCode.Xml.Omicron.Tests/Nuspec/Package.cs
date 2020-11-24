@@ -4,6 +4,9 @@ namespace TauCode.Xml.Omicron.Tests.Nuspec
 {
     public class Package
     {
+        [XmlAttributeProperty(IsCamelCase = true)]
+        public string Xmlns { get; set; }
+
         [XmlElementProperty(IsCamelCase = true)]
         public Metadata Metadata { get; set; }
 
