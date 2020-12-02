@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>TauCode.WebApi.Server.NHibernate</id>
+    <version>1.3.2.1-dev-2020-10-12-10-10</version>
+    <authors>TauCode</authors>
+    <owners>TauCode</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <projectUrl>https://github.com/taucode/taucode.webapi.server.nhibernate</projectUrl>
+    <description>NHibernate support for TauCode Web API server.</description>
+    <releaseNotes>
+      Initial version.
+    </releaseNotes>
+    <tags>taucode webapi server nhibernate</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="FluentNHibernate" version="2.1.2" />
+        <dependency id="TauCode.Domain.NHibernate" version="1.3.2.1-dev-2020-10-11-21-55" />
+        <dependency id="TauCode.WebApi.Server" version="1.3.2.1-dev-2020-10-12-08-10" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\LICENSE.txt" target="" />
+    <file src="..\src\TauCode.WebApi.Server.NHibernate\bin\Release\netstandard2.1\TauCode.WebApi.Server.NHibernate.dll" target="lib\netstandard2.1" />
+    <file src="..\src\TauCode.WebApi.Server.NHibernate\bin\Release\netstandard2.1\TauCode.WebApi.Server.NHibernate.pdb" target="lib\netstandard2.1" />
+  </files>
+</package>

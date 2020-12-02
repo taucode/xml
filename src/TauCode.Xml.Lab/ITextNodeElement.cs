@@ -1,6 +1,6 @@
 ﻿namespace TauCode.Xml.Lab
 {
-    public interface IXmlElementWithTextNode : IXmlElement
+    public interface ITextNodeElement : IElement
     {
         string Value { get; set; }
     }

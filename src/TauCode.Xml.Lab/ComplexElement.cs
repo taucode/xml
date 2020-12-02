@@ -3,24 +3,32 @@ using System.Collections.Generic;
 
 namespace TauCode.Xml.Lab
 {
-    public sealed class XmlElementWithTextNode : IXmlElementWithTextNode
+    public class ComplexElement : IComplexElement
     {
         #region Fields
 
-        private readonly Dictionary<string, string> _attributes;
+        private readonly ElementList _children;
 
         #endregion
 
         #region Constructor
 
-        public XmlElementWithTextNode()
+        public ComplexElement(IElementSchema schema)
         {
-            _attributes = new Dictionary<string, string>();
+            // todo checks
+
+            this.Schema = schema;
+            this.Name = this.Schema.ElementName;
+            _children = new ElementList(this);
         }
 
         #endregion
 
-        #region IXmlElementWithTextNode Members
+        #region IXmlElement Members
+
+        public IElementSchema Schema { get; }
+
+        public string Name { get; }
 
         public void SetAttribute(string attributeName, string attributeValue)
         {
@@ -37,7 +45,11 @@ namespace TauCode.Xml.Lab
             throw new NotImplementedException();
         }
 
-        public string Value { get; set; }
+        #endregion
+
+        #region IXmlElementWithChildren Members
+
+        public IList<IElement> Children => _children;
 
         #endregion
     }
