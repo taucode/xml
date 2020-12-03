@@ -4,12 +4,11 @@ namespace TauCode.Xml.Lab.Tests.Nuspec
 {
     public class NuspecSchemaHolder
     {
-        public static IElementSchema Schema { get; }
+        public static IElementSchema Schema { get; } = Build();
 
-        static NuspecSchemaHolder()
+        internal static IElementSchema Build()
         {
-            Schema = new ElementSchemaBuilder()
-                .AddChildElement("package", typeof(Package), "xmlns")
+            var schema = new ElementSchemaBuilder("package", typeof(Package), "xmlns")
                     .AddChildElement("metadata", typeof(Metadata))
                         .AddTextNodeChildElement("id")
                         .AddTextNodeChildElement("version")
@@ -27,9 +26,12 @@ namespace TauCode.Xml.Lab.Tests.Nuspec
                                 .GetParent()
                             .GetParent()
                         .GetParent()
+                    .GetParent()
                     .AddChildElement("files", typeof(Files))
                         .AddChildElement("file", typeof(File), "src", "target")
                 .Build();
+
+            return schema;
         }
     }
 }
