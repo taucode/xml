@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TauCode.Xml.Tests.Nuspec
+﻿namespace TauCode.Xml.Tests.Nuspec
 {
-    class Dependency
+    public class Dependency : ComplexElement
     {
+        public Dependency(IElementSchema schema)
+            : base(schema)
+        {
+        }
     }
 }

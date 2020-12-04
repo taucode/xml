@@ -1,8 +1,8 @@
 ﻿namespace TauCode.Xml.Tests.Nuspec
 {
-    public class Group : ComplexElement
+    public class Metadata : ComplexElement
     {
-        public Group(IElementSchema schema)
+        public Metadata(IElementSchema schema)
             : base(schema)
         {
         }

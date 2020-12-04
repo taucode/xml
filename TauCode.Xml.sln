@@ -24,9 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DA806905-703
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2BF089B9-674F-44EC-BF17-382D2C7C32D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TauCode.Xml", "src\TauCode.Xml\TauCode.Xml.csproj", "{803CF63A-7A3E-4A16-8731-5AE22150311D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Xml", "src\TauCode.Xml\TauCode.Xml.csproj", "{803CF63A-7A3E-4A16-8731-5AE22150311D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TauCode.Xml.Tests", "test\TauCode.Xml.Tests\TauCode.Xml.Tests.csproj", "{B9A46B9E-799E-4FAC-8F22-CD664B20D53C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TauCode.Xml.Tests", "test\TauCode.Xml.Tests\TauCode.Xml.Tests.csproj", "{B9A46B9E-799E-4FAC-8F22-CD664B20D53C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
