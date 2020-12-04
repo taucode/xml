@@ -1,13 +1,10 @@
-﻿using TauCode.Xml.Attributes;
-
-namespace TauCode.Xml.Tests.NetFrameworkCsProj
+﻿namespace TauCode.Xml.Tests.NetFrameworkCsProj
 {
-    public class Compile
+    public class Compile : ComplexElement
     {
-        [XmlAttributeProperty]
-        public string Include { get; set; }
-
-        [XmlElementProperty]
-        public string DependentUpon { get; set; }
+        public Compile(IElementSchema schema)
+            : base(schema)
+        {
+        }
     }
 }

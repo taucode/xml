@@ -1,13 +1,10 @@
-﻿using TauCode.Xml.Attributes;
-
-namespace TauCode.Xml.Tests.NetFrameworkCsProj
+﻿namespace TauCode.Xml.Tests.NetFrameworkCsProj
 {
-    public class Import
+    public class Import : ComplexElement
     {
-        [XmlAttributeProperty]
-        public string Project { get; set; }
-
-        [XmlAttributeProperty]
-        public string Condition { get; set; }
+        public Import(IElementSchema schema)
+            : base(schema)
+        {
+        }
     }
 }

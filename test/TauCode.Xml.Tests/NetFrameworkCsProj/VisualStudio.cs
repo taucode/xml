@@ -1,7 +1,10 @@
 ﻿namespace TauCode.Xml.Tests.NetFrameworkCsProj
 {
-    public class VisualStudio
+    public class VisualStudio : ComplexElement
     {
-        public FlavorProperties FlavorProperties { get; set; }
+        public VisualStudio(IElementSchema schema)
+            : base(schema)
+        {
+        }
     }
 }

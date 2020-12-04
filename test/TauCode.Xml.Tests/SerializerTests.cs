@@ -1,90 +1,78 @@
 ﻿using NUnit.Framework;
-using System.Globalization;
 using TauCode.Extensions;
 using TauCode.Xml.Tests.NetCoreCsProj;
+using TauCode.Xml.Tests.NetFrameworkCsProj;
 using TauCode.Xml.Tests.Nuspec;
 
 namespace TauCode.Xml.Tests
 {
     [TestFixture]
-    public partial class SerializerTests
+    public class SerializerTests
     {
         private void TodoCompare(string actual, string expected, string extension = "sql")
         {
             TestHelper.WriteDiff(actual, expected, @"c:\temp\0-sql\", extension, "todo");
         }
 
-        [OneTimeSetUp]
-        public void OneTimeSetUp()
+        [Test]
+        public void Deserialize_Nuspec_DeserializesCorrectly()
         {
-            Inflector.Inflector.SetDefaultCultureFunc = () => new CultureInfo("en-US");
+            // Arrange
+            var document = this.GetType().Assembly.GetResourceXml("TauCode.WebApi.Server.NHibernate.Nuspec.xml", true);
+            var documentXml = this.GetType().Assembly.GetResourceText("TauCode.WebApi.Server.NHibernate.Nuspec.xml", true);
+            var serializer = new Serializer();
+
+            // Act
+            var root = serializer.Deserialize(NuspecSchemaHolder.Schema, document);
+
+            // Assert
+            var serializedDocument = serializer.Serialize(root);
+            var serializedDocumentXml = serializedDocument.ToXmlString();
+
+            TodoCompare(serializedDocumentXml, documentXml, "xml");
+
+            Assert.That(serializedDocumentXml, Is.EqualTo(documentXml));
         }
 
         [Test]
-        public void TodoFooDeserialize()
+        public void Deserialize_NetFrameworkCsProj_DeserializesCorrectly()
         {
             // Arrange
+            var document = this.GetType().Assembly.GetResourceXml("Elka.SBP.WebApi.CsProj.xml", true);
+            var documentXml = this.GetType().Assembly.GetResourceText("Elka.SBP.WebApi.CsProj.xml", true);
             var serializer = new Serializer();
-            var xml = this.GetType().Assembly.GetResourceXml("TauCode.WebApi.Server.NHibernate.Nuspec.xml", true);
-
-            var builder = new SchemaBuilder();
-            var schemaDescriptor = builder.Build(typeof(Package), "package");
 
             // Act
-            var package = serializer.Deserialize<Package>(schemaDescriptor, xml.DocumentElement);
+            var root = serializer.Deserialize(NetFrameworkCsProjSchemaHolder.Schema, document);
 
             // Assert
-            // todo: assertions!
+            var serializedDocument = serializer.Serialize(root);
+            var serializedDocumentXml = serializedDocument.ToXmlString();
+
+            TodoCompare(serializedDocumentXml, documentXml, "xml");
+
+            Assert.That(serializedDocumentXml, Is.EqualTo(documentXml));
         }
 
         [Test]
-        public void TodoFooSerialize()
+        public void Deserialize_NetCoreCsProj_DeserializesCorrectly()
         {
             // Arrange
+            var document = this.GetType().Assembly.GetResourceXml("IntegrationTests.CsProj.xml", true);
+            var documentXml = this.GetType().Assembly.GetResourceText("IntegrationTests.CsProj.xml", true);
             var serializer = new Serializer();
-            var xml = this.GetType().Assembly.GetResourceXml("TauCode.WebApi.Server.NHibernate.Nuspec.xml", true);
-            var xmlString = this.GetType().Assembly.GetResourceText("TauCode.WebApi.Server.NHibernate.Nuspec.xml", true);
-
-            var builder = new SchemaBuilder();
-            var schemaDescriptor = builder.Build(typeof(Package), "package");
 
             // Act
-            var package = serializer.Deserialize<Package>(schemaDescriptor, xml.DocumentElement);
-            var serializedPackageXml = serializer.Serialize(schemaDescriptor, package);
-            var serializedPackageXmlString = serializedPackageXml.ToXmlString();
+            var root = serializer.Deserialize(NetCoreCsProjSchemaHolder.Schema, document);
 
             // Assert
-            if (xmlString != serializedPackageXmlString)
-            {
-                TodoCompare(serializedPackageXmlString, xmlString, "xml");
-            }
+            var serializedDocument = serializer.Serialize(root);
+            var serializedDocumentXml = serializedDocument.ToXmlString();
 
-            Assert.That(serializedPackageXmlString, Is.EqualTo(xmlString));
+            TodoCompare(serializedDocumentXml, documentXml, "xml");
+
+            Assert.That(serializedDocumentXml, Is.EqualTo(documentXml));
         }
 
-        [Test]
-        public void Serialize_NetCoreCsProj_SerializesCorrectly()
-        {
-            // Arrange
-            var serializer = new Serializer();
-            var xml = this.GetType().Assembly.GetResourceXml("IntegrationTests.CsProj.xml", true);
-            var xmlString = this.GetType().Assembly.GetResourceText("IntegrationTests.CsProj.xml", true);
-
-            var builder = new SchemaBuilder();
-            var schemaDescriptor = builder.Build(typeof(Project), "Project");
-
-            // Act
-            var package = serializer.Deserialize<Project>(schemaDescriptor, xml.DocumentElement);
-            var serializedPackageXml = serializer.Serialize(schemaDescriptor, package);
-            var serializedPackageXmlString = serializedPackageXml.ToXmlString();
-
-            // Assert
-            if (xmlString != serializedPackageXmlString)
-            {
-                TodoCompare(serializedPackageXmlString, xmlString, "xml");
-            }
-
-            Assert.That(serializedPackageXmlString, Is.EqualTo(xmlString));
-        }
     }
 }

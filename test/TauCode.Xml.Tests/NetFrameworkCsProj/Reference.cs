@@ -1,16 +1,10 @@
-﻿using TauCode.Xml.Attributes;
-
-namespace TauCode.Xml.Tests.NetFrameworkCsProj
+﻿namespace TauCode.Xml.Lab.Tests.NetFrameworkCsProj
 {
-    public class Reference
+    public class Reference : ComplexElement
     {
-        [XmlAttributeProperty]
-        public string Include { get; set; }
-
-        [XmlElementProperty]
-        public string HintPath { get; set; }
-
-        [XmlElementProperty]
-        public string Private { get; set; }
+        public Reference(IElementSchema schema)
+            : base(schema)
+        {
+        }
     }
 }

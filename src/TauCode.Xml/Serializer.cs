@@ -1,275 +1,202 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Xml;
-using TauCode.Xml.Attributes;
-using TauCode.Xml.Descriptors;
 
 namespace TauCode.Xml
 {
     public class Serializer
     {
-        private XmlDocument _xmlDocument;
-        private SchemaDescriptor _schemaDescriptor;
-
-        public T Deserialize<T>(SchemaDescriptor schemaDescriptor, XmlElement xmlElement)
+        public IComplexElement Deserialize(IElementSchema schema, XmlDocument document)
         {
-            return (T)this.DeserializeImpl(schemaDescriptor, xmlElement, typeof(T));
-        }
+            // todo checks
+            var documentElement = document.DocumentElement;
 
-        private object DeserializeImpl(SchemaDescriptor schemaDescriptor, XmlElement xmlElement, Type type)
-        {
-            var elementDescriptor = schemaDescriptor.Elements[type];
-
-            var ctor = elementDescriptor.Type.GetConstructor(Type.EmptyTypes) ?? throw new NotImplementedException();
-            var element = ctor.Invoke(new object[] { });
-
-            var gotInnerText = false;
-
-            var processedSingleNames = new HashSet<string>();
-
-            foreach (var childNode in xmlElement.ChildNodes)
-            {
-                if (childNode is XmlComment)
-                {
-                    continue;
-                }
-
-                if (childNode is XmlText xmlText)
-                {
-                    if (gotInnerText)
-                    {
-                        throw new NotImplementedException();
-                    }
-
-                    if (elementDescriptor.InnerTextProperty == null)
-                    {
-                        throw new NotImplementedException();
-                    }
-                    else
-                    {
-                        elementDescriptor.InnerTextProperty.SetValue(element, xmlText.Value);
-                    }
-
-                    gotInnerText = true;
-                }
-
-                if (childNode is XmlElement childXmlElement)
-                {
-                    var elementPropertyDescriptor = elementDescriptor.ElementProperties.GetValueOrDefault(childXmlElement.Name);
-                    if (elementPropertyDescriptor == null)
-                    {
-                        throw new NotImplementedException();
-                    }
-
-                    switch (elementPropertyDescriptor.Kind)
-                    {
-                        case ElementPropertyKind.ValueElement:
-                            // todo check hash table
-
-                            var value = childXmlElement.InnerText;
-                            elementPropertyDescriptor.Property.SetValue(element, value);
-                            processedSingleNames.Add(elementPropertyDescriptor.ElementName);
-
-                            break;
-
-                        case ElementPropertyKind.ValueElementList:
-                            throw new NotImplementedException();
-
-                        case ElementPropertyKind.ComplexElement:
-                            // todo check hash table
-
-                            var childValue = this.DeserializeImpl(
-                                schemaDescriptor,
-                                childXmlElement,
-                                elementPropertyDescriptor.Element.Type);
-
-
-                            elementPropertyDescriptor.Property.SetValue(element, childValue);
-                            processedSingleNames.Add(elementPropertyDescriptor.ElementName);
-
-                            break;
-
-
-                        case ElementPropertyKind.ComplexElementList:
-                            var childListEntry = this.DeserializeImpl(
-                                schemaDescriptor,
-                                childXmlElement,
-                                elementPropertyDescriptor.Element.Type);
-
-                            var list = (IList)elementPropertyDescriptor.Property.GetValue(element);
-                            list.Add(childListEntry);
-
-                            break;
-
-                        default:
-                            throw new NotImplementedException();
-                    }
-                }
-            }
-
-            foreach (XmlAttribute attribute in xmlElement.Attributes)
-            {
-                var attrProp = elementDescriptor.AttributeProperties.GetValueOrDefault(attribute.Name);
-                if (attrProp == null)
-                {
-                    throw new NotImplementedException();
-                }
-                else
-                {
-                    attrProp.Property.SetValue(element, attribute.Value);
-                }
-            }
-
+            var element = this.DeserializeComplexElement(schema, documentElement);
             return element;
         }
 
-        public XmlDocument Serialize(SchemaDescriptor schemaDescriptor, object obj)
+        private IComplexElement DeserializeComplexElement(IElementSchema schema, XmlElement xmlElement)
         {
-            // todo checks, including obj type
+            if (typeof(ComplexElement).IsAssignableFrom(schema.ElementType))
+            {
+                var ctor = schema.ElementType.GetConstructor(new[] { typeof(IElementSchema) });
+                if (ctor == null)
+                {
+                    throw new NotImplementedException();
+                }
 
-            var type = obj.GetType();
-            var elementDescriptor = schemaDescriptor.Elements.GetValueOrDefault(type);
-            if (elementDescriptor == null)
+                IComplexElement element = (IComplexElement)ctor.Invoke(new object[] { schema });
+
+                // attributes
+                foreach (XmlAttribute xmlElementAttribute in xmlElement.Attributes)
+                {
+                    element.SetAttribute(xmlElementAttribute.Name, xmlElementAttribute.Value);
+                }
+
+                // child elements
+                foreach (var xmlChildNode in xmlElement.ChildNodes)
+                {
+                    if (xmlChildNode is XmlComment)
+                    {
+                        continue;
+                    }
+
+                    if (xmlChildNode is XmlElement xmlChildElement)
+                    {
+                        var childSchema = schema.GetChildElement(xmlChildElement.Name);
+
+                        if (childSchema.ContainsTextNode())
+                        {
+                            ITextNodeElement childElement = this.DeserializeTextNodeElement(childSchema, xmlChildElement);
+
+                            ((ElementList)(element.Children)).Add(childElement, false);
+                        }
+                        else
+                        {
+                            var childElement = this.DeserializeComplexElement(childSchema, xmlChildElement);
+                            ((ElementList)(element.Children)).Add(childElement, false);
+                        }
+                    }
+                    else
+                    {
+                        throw new NotImplementedException();
+                    }
+                }
+
+                return element;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private ITextNodeElement DeserializeTextNodeElement(IElementSchema schema, XmlElement xmlElement)
+        {
+            var childXmlNodes = xmlElement.ChildNodes.Cast<XmlNode>().ToList();
+
+            // todo: copy-pasting; merge cases 'count == 0' and 'count == 1'
+
+            if (childXmlNodes.Count == 0)
+            {
+                ITextNodeElement textNodeElement = new TextNodeElement(schema);
+                
+                foreach (XmlAttribute xmlElementAttribute in xmlElement.Attributes)
+                {
+                    textNodeElement.SetAttribute(xmlElementAttribute.Name, xmlElementAttribute.Value);
+                }
+
+                return textNodeElement;
+            }
+
+            if (childXmlNodes.Count != 1)
             {
                 throw new NotImplementedException();
             }
 
-            _schemaDescriptor = schemaDescriptor;
-            _xmlDocument = new XmlDocument();
-            var element = this.BuildElement(_schemaDescriptor.RootName, elementDescriptor, obj);
-
-            var attr = type.GetCustomAttribute<XmlDocumentDeclarationAttribute>();
-            if (attr != null)
+            if (childXmlNodes.Single() is XmlText xmlText)
             {
-                var xmlDeclaration = _xmlDocument.CreateXmlDeclaration("1.0", attr.Encoding, attr.Standalone);
-                _xmlDocument.AppendChild(xmlDeclaration);
+                ITextNodeElement textNodeElement = new TextNodeElement(schema);
+                textNodeElement.Value = xmlText.Value;
+
+                foreach (XmlAttribute xmlElementAttribute in xmlElement.Attributes)
+                {
+                    textNodeElement.SetAttribute(xmlElementAttribute.Name, xmlElementAttribute.Value);
+                }
+
+                return textNodeElement;
             }
-
-            _xmlDocument.AppendChild(element);
-
-            return _xmlDocument;
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        private XmlElement BuildElement(
-            string elementName,
-            ElementDescriptor elementDescriptor,
-            object obj)
+        public XmlDocument Serialize(IComplexElement rootElement)
         {
-            var xmlElement = _xmlDocument.CreateElement(elementName);
+            // todo checks
 
-            foreach (var pair in elementDescriptor.AttributeProperties)
+            var xmlDocument = new XmlDocument();
+
+            var attr = rootElement.GetType().GetCustomAttribute<XmlDocumentDeclarationAttribute>();
+            if (attr != null)
             {
-                var attributePropertyDescriptor = pair.Value;
-                var property = attributePropertyDescriptor.Property;
-                var propertyValue = (string)property.GetValue(obj);
+                var xmlDeclaration = xmlDocument.CreateXmlDeclaration("1.0", attr.Encoding, attr.Standalone);
+                xmlDocument.AppendChild(xmlDeclaration);
+            }
 
-                if (propertyValue == null)
+            this.SerializeComplexElement(xmlDocument, rootElement);
+
+            return xmlDocument;
+        }
+
+        private XmlElement SerializeComplexElement(XmlNode xmlParentNode, IComplexElement element)
+        {
+            // todo: check element has correct schema etc
+
+            XmlDocument ownerDocument;
+
+            if (xmlParentNode is XmlDocument xmlDocument)
+            {
+                ownerDocument = xmlDocument;
+            }
+            else if (xmlParentNode is XmlElement xmlParentElement)
+            {
+                ownerDocument = xmlParentElement.OwnerDocument ?? throw new NotImplementedException();
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+
+            var xmlElement = ownerDocument.CreateElement(element.Name);
+
+            // deal with attributes
+            foreach (var attributeName in element.GetAttributeNames())
+            {
+                var attributeValue = element.GetAttribute(attributeName);
+                xmlElement.SetAttribute(attributeName, attributeValue);
+            }
+            
+            // deal with child elements
+            foreach (var childElement in element.Children)
+            {
+                // todo: check element has correct schema etc
+
+                if (childElement is TextNodeElement childTextNodeElement)
                 {
-                    continue;
+                    var textElement = ownerDocument.CreateElement(childTextNodeElement.Name);
+
+                    if (string.IsNullOrEmpty(childTextNodeElement.Value))
+                    {
+                        // do nothing
+                    }
+                    else
+                    {
+                        textElement.InnerText = childTextNodeElement.Value;
+                    }
+
+                    foreach (var attributeName in childTextNodeElement.GetAttributeNames())
+                    {
+                        var attributeValue = childTextNodeElement.GetAttribute(attributeName);
+                        textElement.SetAttribute(attributeName, attributeValue);
+                    }
+
+                    xmlElement.AppendChild(textElement);
                 }
-
-                xmlElement.SetAttribute(pair.Key, propertyValue);
-            }
-
-            if (elementDescriptor.InnerTextProperty != null)
-            {
-                var innerText = (string)elementDescriptor.InnerTextProperty.GetValue(obj);
-                var textNode = _xmlDocument.CreateTextNode(innerText);
-
-                xmlElement.AppendChild(textNode);
-            }
-
-            foreach (var pair in elementDescriptor.ElementProperties)
-            {
-                var childElementName = pair.Key;
-                var property = pair.Value.Property;
-                var kind = pair.Value.Kind;
-
-                switch (kind)
+                else if (childElement is ComplexElement childComplexElement)
                 {
-                    case ElementPropertyKind.ValueElement:
-                        var innerText = (string)property.GetValue(obj);
-                        if (innerText == null)
-                        {
-                            // skip
-                        }
-                        else
-                        {
-                            var textHolderElement = _xmlDocument.CreateElement(childElementName);
-                            var textNode = _xmlDocument.CreateTextNode(innerText);
-                            textHolderElement.AppendChild(textNode);
-
-                            xmlElement.AppendChild(textHolderElement);
-                        }
-
-                        break;
-
-                    case ElementPropertyKind.ValueElementList:
-                        throw new NotImplementedException();
-
-                    case ElementPropertyKind.ComplexElement:
-                        var complexObject = property.GetValue(obj);
-                        if (complexObject == null)
-                        {
-                            // skip
-                        }
-                        else
-                        {
-                            var childElementDescriptor = _schemaDescriptor
-                                .Elements
-                                .GetValueOrDefault(property.PropertyType);
-
-                            if (childElementDescriptor == null)
-                            {
-                                throw new NotImplementedException();
-                            }
-
-                            var childXmlElement = this.BuildElement(
-                                childElementName,
-                                childElementDescriptor,
-                                complexObject);
-
-                            xmlElement.AppendChild(childXmlElement);
-                        }
-
-                        break;
-
-                    case ElementPropertyKind.ComplexElementList:
-                        var list = (IList)property.GetValue(obj);
-
-                        var listObjElementDescriptor = _schemaDescriptor
-                            .Elements
-                            .GetValueOrDefault(property.PropertyType.GetGenericArguments().Single());
-
-                        if (listObjElementDescriptor == null)
-                        {
-                            throw new NotImplementedException();
-                        }
-
-                        foreach (var listObj in list)
-                        {
-                            if (listObj == null)
-                            {
-                                continue;
-                            }
-
-                            var listObjElement = this.BuildElement(
-                                childElementName,
-                                listObjElementDescriptor,
-                                listObj);
-
-                            xmlElement.AppendChild(listObjElement);
-                        }
-
-                        break;
-
-                    default:
-                        throw new NotImplementedException();
+                    var childXmlElement = this.SerializeComplexElement(xmlElement, childComplexElement);
+                    xmlElement.AppendChild(childXmlElement);
+                }
+                else
+                {
+                    throw new NotImplementedException();
                 }
             }
+
+            xmlParentNode.AppendChild(xmlElement);
 
             return xmlElement;
         }

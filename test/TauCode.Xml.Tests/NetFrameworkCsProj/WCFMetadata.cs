@@ -1,10 +1,10 @@
-﻿using TauCode.Xml.Attributes;
-
-namespace TauCode.Xml.Tests.NetFrameworkCsProj
+﻿namespace TauCode.Xml.Tests.NetFrameworkCsProj
 {
-    public class WCFMetadata
+    public class WCFMetadata : ComplexElement
     {
-        [XmlAttributeProperty]
-        public string Include { get; set; }
+        public WCFMetadata(IElementSchema schema)
+            : base(schema)
+        {
+        }
     }
 }

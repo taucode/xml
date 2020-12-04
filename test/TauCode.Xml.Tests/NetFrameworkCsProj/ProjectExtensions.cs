@@ -1,7 +1,10 @@
 ﻿namespace TauCode.Xml.Tests.NetFrameworkCsProj
 {
-    public class ProjectExtensions
+    public class ProjectExtensions : ComplexElement
     {
-        public VisualStudio VisualStudio { get; set; }
+        public ProjectExtensions(IElementSchema schema)
+            : base(schema)
+        {
+        }
     }
 }

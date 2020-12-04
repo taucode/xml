@@ -1,10 +1,10 @@
-﻿using TauCode.Xml.Attributes;
-
-namespace TauCode.Xml.Tests.NetFrameworkCsProj
+﻿namespace TauCode.Xml.Tests.NetFrameworkCsProj
 {
-    public class None
+    public class None : ComplexElement
     {
-        [XmlAttributeProperty]
-        public string Include { get; set; }
+        public None(IElementSchema schema)
+            : base(schema)
+        {
+        }
     }
 }

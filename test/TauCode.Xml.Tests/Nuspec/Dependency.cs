@@ -1,13 +1,10 @@
-﻿using TauCode.Xml.Attributes;
-
-namespace TauCode.Xml.Tests.Nuspec
+﻿namespace TauCode.Xml.Tests.Nuspec
 {
-    public class Dependency
+    public class Dependency : ComplexElement
     {
-        [XmlAttributeProperty(IsCamelCase = true)]
-        public string Id { get; set; }
-
-        [XmlAttributeProperty(IsCamelCase = true)]
-        public string Version { get; set; }
+        public Dependency(IElementSchema schema)
+            : base(schema)
+        {
+        }
     }
 }

@@ -1,17 +1,10 @@
-﻿using TauCode.Xml.Attributes;
-
-namespace TauCode.Xml.Tests.Nuspec
+﻿namespace TauCode.Xml.Tests.Nuspec
 {
     [XmlDocumentDeclaration]
-    public class Package
+    public class Package : ComplexElement
     {
-        [XmlAttributeProperty(IsCamelCase = true)]
-        public string Xmlns { get; set; }
-
-        [XmlElementProperty(IsCamelCase = true)]
-        public Metadata Metadata { get; set; }
-
-        [XmlElementProperty(IsCamelCase = true)]
-        public FilesElement Files { get; set; }
+        public Package(IElementSchema schema) : base(schema)
+        {
+        }
     }
 }

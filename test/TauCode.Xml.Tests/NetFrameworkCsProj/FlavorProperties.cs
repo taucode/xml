@@ -1,14 +1,10 @@
-﻿using TauCode.Xml.Attributes;
-
-namespace TauCode.Xml.Tests.NetFrameworkCsProj
+﻿namespace TauCode.Xml.Tests.NetFrameworkCsProj
 {
-    public class FlavorProperties
+    public class FlavorProperties : ComplexElement
     {
-        [XmlAttributeProperty]
-        public string GUID { get; set; }
-
-        [XmlElementProperty]
-        public WebProjectProperties WebProjectProperties { get; set; }
+        public FlavorProperties(IElementSchema schema)
+            : base(schema)
+        {
+        }
     }
-
 }
