@@ -86,7 +86,6 @@ namespace TauCode.Xml.Lab.Schemas
         public IElementSchema GetChildElement(string childElementName)
         {
             // todo checks
-
             var childSchema = _childSchemas.GetValueOrDefault(childElementName);
             if (childSchema == null)
             {

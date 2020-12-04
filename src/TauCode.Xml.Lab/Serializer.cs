@@ -37,6 +37,11 @@ namespace TauCode.Xml.Lab
                 // child elements
                 foreach (var xmlChildNode in xmlElement.ChildNodes)
                 {
+                    if (xmlChildNode is XmlComment)
+                    {
+                        continue;
+                    }
+
                     if (xmlChildNode is XmlElement xmlChildElement)
                     {
                         var childSchema = schema.GetChildElement(xmlChildElement.Name);
@@ -163,7 +168,15 @@ namespace TauCode.Xml.Lab
                 if (childElement is TextNodeElement childTextNodeElement)
                 {
                     var textElement = ownerDocument.CreateElement(childTextNodeElement.Name);
-                    textElement.InnerText = childTextNodeElement.Value;
+
+                    if (string.IsNullOrEmpty(childTextNodeElement.Value))
+                    {
+                        // do nothing
+                    }
+                    else
+                    {
+                        textElement.InnerText = childTextNodeElement.Value;
+                    }
 
                     foreach (var attributeName in childTextNodeElement.GetAttributeNames())
                     {
