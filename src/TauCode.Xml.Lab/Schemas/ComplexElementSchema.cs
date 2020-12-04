@@ -85,9 +85,17 @@ namespace TauCode.Xml.Lab.Schemas
 
         public IElementSchema GetChildElement(string childElementName)
         {
-            throw new NotImplementedException();
+            // todo checks
+
+            var childSchema = _childSchemas.GetValueOrDefault(childElementName);
+            if (childSchema == null)
+            {
+                throw new NotImplementedException();
+            }
+
+            return childSchema;
         }
 
-        public bool ContainsTextNode => false;
+        //public bool ContainsTextNode => false;
     }
 }

@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace TauCode.Xml.Lab
 {
@@ -13,9 +13,13 @@ namespace TauCode.Xml.Lab
 
         #region Constructor
 
-        public TextNodeElement()
+        public TextNodeElement(IElementSchema schema)
         {
+            // todo checks
+
             _attributes = new Dictionary<string, string>();
+            this.Schema = schema;
+            this.Name = this.Schema.ElementName;
         }
 
         #endregion
@@ -28,19 +32,19 @@ namespace TauCode.Xml.Lab
 
         public void SetAttribute(string attributeName, string attributeValue)
         {
-            throw new NotImplementedException();
+            // todo checks
+
+            _attributes[attributeName] = attributeValue;
         }
 
         public string GetAttribute(string attributeName)
         {
-            throw new NotImplementedException();
+            // todo checks
+
+            return _attributes.GetValueOrDefault(attributeName);
         }
 
-        public IReadOnlyList<string> GetAttributeNames()
-        {
-            throw new NotImplementedException();
-        }
-
+        public IReadOnlyList<string> GetAttributeNames() => _attributes.Keys.ToList();
         #endregion
 
         #region ITextNodeElement Members

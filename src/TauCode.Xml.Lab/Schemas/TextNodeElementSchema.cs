@@ -66,6 +66,6 @@ namespace TauCode.Xml.Lab.Schemas
             throw new NotImplementedException();
         }
 
-        public bool ContainsTextNode => true;
+        //public bool ContainsTextNode => true;
     }
 }

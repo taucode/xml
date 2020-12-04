@@ -23,10 +23,24 @@ namespace TauCode.Xml.Lab
 
         #endregion
 
+        #region Internal
+
+
+        internal void Add(IElement element, bool check)
+        {
+            if (check)
+            {
+                throw new NotImplementedException();
+            }
+
+            _elements.Add(element);
+        }
+
+        #endregion
+
         #region IEnumerable Members
 
         IEnumerator IEnumerable.GetEnumerator() => _elements.GetEnumerator();
-
 
         #endregion
 
@@ -42,10 +56,7 @@ namespace TauCode.Xml.Lab
 
         public bool IsReadOnly => false;
 
-        public void Add(IElement element)
-        {
-            throw new NotImplementedException();
-        }
+        public void Add(IElement element) => this.Add(element, true);
 
         public void Clear() => _elements.Clear();
 
@@ -56,7 +67,7 @@ namespace TauCode.Xml.Lab
         public bool Remove(IElement element) => _elements.Remove(element);
 
         #endregion
-        
+
         #region IList<IElement> Members
 
         public IElement this[int index]

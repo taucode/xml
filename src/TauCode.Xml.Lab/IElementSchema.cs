@@ -16,6 +16,6 @@ namespace TauCode.Xml.Lab
         bool RemoveChildElement(string childElementName);
         bool ContainsChildElement(string childElementName);
         IElementSchema GetChildElement(string childElementName);
-        bool ContainsTextNode { get; }
+        //bool ContainsTextNode { get; }
     }
 }
