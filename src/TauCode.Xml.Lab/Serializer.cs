@@ -118,7 +118,6 @@ namespace TauCode.Xml.Lab
             // todo checks
 
             var xmlDocument = new XmlDocument();
-            
 
             var attr = rootElement.GetType().GetCustomAttribute<XmlDocumentDeclarationAttribute>();
             if (attr != null)

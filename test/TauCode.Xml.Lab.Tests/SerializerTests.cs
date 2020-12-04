@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using TauCode.Extensions;
+using TauCode.Xml.Lab.Tests.NetCoreCsProj;
 using TauCode.Xml.Lab.Tests.NetFrameworkCsProj;
 using TauCode.Xml.Lab.Tests.Nuspec;
 
@@ -43,6 +44,26 @@ namespace TauCode.Xml.Lab.Tests
 
             // Act
             var root = serializer.Deserialize(NetFrameworkCsProjSchemaHolder.Schema, document);
+
+            // Assert
+            var serializedDocument = serializer.Serialize(root);
+            var serializedDocumentXml = serializedDocument.ToXmlString();
+
+            TodoCompare(serializedDocumentXml, documentXml, "xml");
+
+            Assert.That(serializedDocumentXml, Is.EqualTo(documentXml));
+        }
+
+        [Test]
+        public void Deserialize_NetCoreCsProj_DeserializesCorrectly()
+        {
+            // Arrange
+            var document = this.GetType().Assembly.GetResourceXml("IntegrationTests.CsProj.xml", true);
+            var documentXml = this.GetType().Assembly.GetResourceText("IntegrationTests.CsProj.xml", true);
+            var serializer = new Serializer();
+
+            // Act
+            var root = serializer.Deserialize(NetCoreCsProjSchemaHolder.Schema, document);
 
             // Assert
             var serializedDocument = serializer.Serialize(root);
