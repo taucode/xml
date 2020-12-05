@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/taucode/taucode.xml</projectUrl>
     <description>TauCode XML utilities.</description>
     <releaseNotes>
-      Initial version.
+      Bumped version.
     </releaseNotes>
     <tags>taucode xml</tags>
     <dependencies>
