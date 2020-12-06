@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="TauCode.Algorithms" Version="1.3.2.1-dev-2020-11-14-20-24" />
+    <PackageReference Include="TauCode.Algorithms" Version="1.3.2.2-dev-2020-12-06-20-47" />
   </ItemGroup>
 
   <ItemGroup>
