@@ -1,4 +1,4 @@
-2020-11-15
+﻿2020-11-15
 ==========
     1. Initial version.
 
@@ -9,3 +9,7 @@
 2021-03-01
 ==========
     1. Resurrection.
+
+2021-05-11
+==========
+    1. Going to put this project in charge: TauCode.Lab.Dev.
