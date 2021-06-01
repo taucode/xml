@@ -13,3 +13,7 @@
 2021-05-11
 ==========
     1. Going to put this project in charge: TauCode.Lab.Dev.
+
+2021-06-01
+==========
+    1. Dismissing Lab (taucode.dev\tau-lab\TauCode.Rho.Xml), moving results here.
