@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using TauCode.Xml.Unbound;
 
 namespace TauCode.Xml
 {
     public interface IElement
     {
-        IElementSchema Schema { get; }
-        string Name { get; }
-        void SetAttribute(string attributeName, string attributeValue);
-        string GetAttribute(string attributeName);
-        IReadOnlyList<string> GetAttributeNames();
+        IUnboundSchema UnboundSchema { get; }
+        IAttributeCollection UnboundAttributes { get; }
     }
 }

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Person Name="Vito Corleone" Age="63" Gender="Male">
+  <Spouse Name="Carmela" Age="60" Gender="Female">
+  </Spouse>
+  <Kid Name="Sonny" Age="35" Gender="Male" />
+  <Kid Name="Freddie" Age="31" Gender="Male" />
+  <Kid Name="Connie" Age="24" Gender="Female" />
+  <Kid Name="Michael" Age="21" Gender="Male" />
+</Person>
