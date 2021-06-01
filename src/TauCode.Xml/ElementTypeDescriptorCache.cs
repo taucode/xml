@@ -94,7 +94,7 @@ namespace TauCode.Xml
                         throw new NotImplementedException();
                     }
 
-                    var elementName = prop.GetCustomAttribute<TextNodeElementValueAttribute>().ElementName;
+                    var elementName = prop.GetCustomAttribute<TextNodeElementValueAttribute>().ElementName ?? prop.Name;
                     var isMandatory = prop.PropertyType.IsValueType; // todo: error. Nullable`1 is also value type.
 
                     elementTypeDescriptor.BoundSchemaInternal.AddBoundTextNodeElementValue(elementName, prop, isMandatory);

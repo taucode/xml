@@ -17,3 +17,5 @@
 2021-06-01
 ==========
     1. Dismissing Lab (taucode.dev\tau-lab\TauCode.Rho.Xml), moving results here.
+    2. Started cleaning solution from not-impl and to-do-s.
+

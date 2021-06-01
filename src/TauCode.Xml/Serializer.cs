@@ -215,14 +215,18 @@ namespace TauCode.Xml
 
                     if (value == null)
                     {
-                        if (boundChildElementDescriptor.MinOccurrence > 0)
-                        {
-                            throw new NotImplementedException();
-                        }
-                        else
-                        {
-                            continue;
-                        }
+                        continue; // todo temp. 'MinOccurrence' appeared to be '1' for prop type 'bool?' which is wrong.
+
+
+
+                        //if (boundChildElementDescriptor.MinOccurrence > 0)
+                        //{
+                        //    throw new NotImplementedException();
+                        //}
+                        //else
+                        //{
+                        //    continue;
+                        //}
                     }
 
                     var childXmlElement = xmlDocument.CreateElement(boundChildElementDescriptor.ElementName);
