@@ -21,6 +21,7 @@ namespace TauCode.Xml
         public string ElementName { get; }
 
         public IUnboundSchema UnboundSchema => null;
+
         public IAttributeCollection UnboundAttributes => _attributes;
         public IList<IElement> UnboundChildren => _children;
     }

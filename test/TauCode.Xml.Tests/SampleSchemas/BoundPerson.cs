@@ -14,7 +14,5 @@ namespace TauCode.Xml.Tests.SampleSchemas
         public BoundPerson Spouse { get; set; }
 
         public IList<BoundPerson> Kids { get; set; } = new List<BoundPerson>();
-
-        public override IUnboundSchema UnboundSchema => null;
     }
 }

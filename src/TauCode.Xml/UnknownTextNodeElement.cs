@@ -16,7 +16,9 @@ namespace TauCode.Xml
         public string ElementName { get; }
 
         public IUnboundSchema UnboundSchema => null;
+
         public IAttributeCollection UnboundAttributes => throw new NotImplementedException();
+
         public string Value
         {
             get => throw new NotImplementedException();

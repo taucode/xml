@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace TauCode.Xml
 {
     // todo: internal?
-    public class AttributeCollection : IAttributeCollection
+    internal class AttributeCollection : IAttributeCollection
     {
         #region Fields
 
