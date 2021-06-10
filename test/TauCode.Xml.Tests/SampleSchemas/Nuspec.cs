@@ -29,16 +29,12 @@ namespace TauCode.Xml.Tests.SampleSchemas
 
         public class LicenseElement : TextNodeElementBase
         {
-            public override IUnboundSchema UnboundSchema => null;
-
             [AttributeValue("type")]
             public string Type { get; set; }
         }
 
         public class DependencyElement : ComplexElementBase
         {
-            public override IUnboundSchema UnboundSchema => null;
-
             [AttributeValue("id")]
             public string Id { get; set; }
 
@@ -48,8 +44,6 @@ namespace TauCode.Xml.Tests.SampleSchemas
 
         public class GroupElement : ComplexElementBase
         {
-            public override IUnboundSchema UnboundSchema => null;
-
             [AttributeValue("targetFramework")]
             public string TargetFramework { get; set; }
 
@@ -59,16 +53,12 @@ namespace TauCode.Xml.Tests.SampleSchemas
 
         public class DependenciesElement : ComplexElementBase
         {
-            public override IUnboundSchema UnboundSchema => null; // todo: null is default
-
             [Element("group")]
             public IList<GroupElement> Groups { get; set; } = new List<GroupElement>();
         }
 
         public class RepositoryElement : ComplexElementBase
         {
-            public override IUnboundSchema UnboundSchema => null;
-
             [AttributeValue("type")]
             public string Type { get; set; }
 
@@ -78,8 +68,6 @@ namespace TauCode.Xml.Tests.SampleSchemas
 
         public class MetadataElement : ComplexElementBase
         {
-            public override IUnboundSchema UnboundSchema => null;
-
             [TextNodeElementValue("id")]
             public string Id { get; set; }
 
@@ -119,8 +107,6 @@ namespace TauCode.Xml.Tests.SampleSchemas
 
         public class FileElement : ComplexElementBase
         {
-            public override IUnboundSchema UnboundSchema => null;
-
             [AttributeValue("src")]
             public string Src { get; set; }
 
@@ -130,17 +116,9 @@ namespace TauCode.Xml.Tests.SampleSchemas
 
         public class FilesElement : ComplexElementBase
         {
-            public override IUnboundSchema UnboundSchema => null;
-
             [Element("file")]
             public IList<FileElement> Files { get; set; } = new List<FileElement>(); // todo: must initialize by deserializer
         }
-
-        #endregion
-
-        #region Overridden
-
-        public override IUnboundSchema UnboundSchema => null;
 
         #endregion
 

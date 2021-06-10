@@ -13,7 +13,7 @@ namespace TauCode.Xml
         }
 
         [XmlIgnore]
-        public abstract IUnboundSchema UnboundSchema { get; }
+        public virtual IUnboundSchema UnboundSchema => null;
 
         [XmlIgnore]
         public IAttributeCollection UnboundAttributes => _unboundAttributes;
