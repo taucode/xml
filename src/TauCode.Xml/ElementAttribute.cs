@@ -1,17 +1,15 @@
-using System;
+﻿using System;
 
 namespace TauCode.Xml
 {
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Class)]
     public class ElementAttribute : Attribute
     {
         public ElementAttribute(string elementName)
         {
-            this.ElementName = elementName;
+            this.ElementName = elementName ?? throw new ArgumentNullException(nameof(elementName));
         }
 
-        public string ElementName { get; }
-
-        // todo: is mandatory
+        public string ElementName { get; set; }
     }
 }
