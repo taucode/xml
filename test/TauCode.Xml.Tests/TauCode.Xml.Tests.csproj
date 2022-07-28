@@ -1,25 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Net6CsProj.xml" />
+    <None Remove="Resources\NetFrameworkCsProj.xml" />
+    <None Remove="Resources\Nuget.nuspec" />
     <None Remove="Resources\Person1.xml" />
-    <None Remove="Resources\TauCode.WebApi.Testing.nuspec" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Net6CsProj.xml" />
+    <EmbeddedResource Include="Resources\NetFrameworkCsProj.xml" />
     <EmbeddedResource Include="Resources\Person1.xml" />
-    <EmbeddedResource Include="Resources\TauCode.WebApi.Testing.nuspec" />
+    <EmbeddedResource Include="Resources\Nuget.nuspec" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NUnit" Version="3.13.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
-    <PackageReference Include="TauCode.Extensions" Version="1.3.2.7-dev-2021-04-20-18-55" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+    <PackageReference Include="TauCode.Extensions" Version="1.3.7" />
   </ItemGroup>
 
   <ItemGroup>
