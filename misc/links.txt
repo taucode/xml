@@ -1,0 +1,10 @@
+﻿2021-05-15
+==========
+    1. http://netcode.ru/dotnet/?artID=6580
+    2. https://elliotbalynn.blog/fraction-implementation-in-c/
+    3. https://github.com/ebalynn/Balynn.Maths.Fraction/tree/master/src/Balynn.Maths.Fraction
+
+2021-05-25
+==========
+    1. https://github.com/MyGet/NuGetPackages/blob/master/NuSpec/tools/nuspec.xsd
+    2. xsd.exe - check on msdn site

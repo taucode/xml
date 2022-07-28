@@ -1,35 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Input\Elka.SBP.WebApi.CsProj.xml" />
-    <None Remove="Resources\Input\IntegrationTests.CsProj.xml" />
-    <None Remove="Resources\Input\TauCode.WebApi.Server.NHibernate.Nuspec.xml" />
+    <None Remove="Resources\Net6CsProj.xml" />
+    <None Remove="Resources\NetFrameworkCsProj.xml" />
+    <None Remove="Resources\Nuget.nuspec" />
+    <None Remove="Resources\Person1.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Input\Elka.SBP.WebApi.CsProj.xml" />
-    <EmbeddedResource Include="Resources\Input\IntegrationTests.CsProj.xml" />
-    <EmbeddedResource Include="Resources\Input\TauCode.WebApi.Server.NHibernate.Nuspec.xml" />
+    <EmbeddedResource Include="Resources\Net6CsProj.xml" />
+    <EmbeddedResource Include="Resources\NetFrameworkCsProj.xml" />
+    <EmbeddedResource Include="Resources\Person1.xml" />
+    <EmbeddedResource Include="Resources\Nuget.nuspec" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NUnit" Version="3.12.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
-    <PackageReference Include="TauCode.Extensions" Version="1.3.0" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+    <PackageReference Include="TauCode.Extensions" Version="1.3.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\TauCode.Xml\TauCode.Xml.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\Output\" />
   </ItemGroup>
 
 </Project>

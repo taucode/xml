@@ -1,7 +1,24 @@
-2020-11-15
+﻿2020-11-15
 ==========
     1. Initial version.
 
 2020-12-05
 ==========
     1. First (technical) release.
+
+2021-03-01
+==========
+    1. Resurrection.
+
+2021-05-11
+==========
+    1. Going to put this project in charge: TauCode.Lab.Dev.
+
+2021-06-01
+==========
+    1. Dismissing Lab (taucode.dev\tau-lab\TauCode.Rho.Xml), moving results here.
+    2. Started cleaning solution from not-impl and to-do-s.
+
+2022-07-28
+==========
+    1. Release 1.3.7.

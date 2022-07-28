@@ -1,0 +1,23 @@
+﻿2021-05-11
+==========
+    1. Prepare for deployment.
+    2. Produce TauCode.Lab.Dev.
+
+2021-05-30
+==========
+    1. ElementBase.UnboundSchema returns null, but ElementBase is still abstract.
+    2. Disallow recursive serialization
+    3. Element must not be struct, interface, abstract etc.
+    4. Unbound schema is restrictive => cannot add attrs/elements
+    5. Element type is kinda "sealed", i.e. must exactly match, no ancestors allowed. Same for element lists.
+    6. Support camel-case via settings, not (only) via attributes (attributes have priviledge of course).
+    7. Support dictionaries (future releases)
+    8. Support POCO serialization/deserialization (future releases)
+
+2021-06-01
+==========
+    1. Dispatch (toss) links.txt.
+
+2022-07-28
+==========
+    1. Fix "not impl ex."
