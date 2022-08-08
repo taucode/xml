@@ -1,10 +1,9 @@
 ﻿using System.Xml;
 
-namespace TauCode.Xml
+namespace TauCode.Xml;
+
+public interface ISerializer
 {
-    public interface ISerializer
-    {
-        XmlDocument Serialize(object obj);
-        T Deserialize<T>(XmlDocument xmlDoc);
-    }
+    XmlDocument Serialize(object obj);
+    T Deserialize<T>(XmlDocument xmlDoc);
 }

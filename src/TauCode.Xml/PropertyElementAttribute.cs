@@ -1,15 +1,12 @@
-﻿using System;
+﻿namespace TauCode.Xml;
 
-namespace TauCode.Xml
+[AttributeUsage(AttributeTargets.Property)]
+public class PropertyElementAttribute : Attribute
 {
-    [AttributeUsage(AttributeTargets.Property)]
-    public class PropertyElementAttribute : Attribute
+    public PropertyElementAttribute(string propertyName = null)
     {
-        public PropertyElementAttribute(string propertyName = null)
-        {
-            this.PropertyName = propertyName;
-        }
-
-        public string PropertyName { get; set; }
+        this.PropertyName = propertyName;
     }
+
+    public string PropertyName { get; set; }
 }
