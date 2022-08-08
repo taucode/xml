@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace TauCode.Xml;
 
-namespace TauCode.Xml
+[AttributeUsage(AttributeTargets.Property)]
+public class InnerTextAttribute : Attribute
 {
-    [AttributeUsage(AttributeTargets.Property)]
-    public class InnerTextAttribute : Attribute
-    {
-    }
 }
